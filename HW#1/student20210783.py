@@ -25,7 +25,7 @@ countB = totalB
 countC = 0
 
 A_boundary = totals[min(totalA - 1, len(totals) - 1)]
-B_boundary = totals[min(totalA + totalB - 1, len(totals) - 1)-1]
+B_boundary = totals[min(totalA + totalB - 1, len(totals) - 1)]
 
 for i, total in enumerate(totals):
     if total < 40:
