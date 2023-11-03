@@ -22,7 +22,7 @@ totalA = int(stdNum * 0.3)
 totalB = int(stdNum * 0.4)
 countA = totalA
 countB = totalB
-countC = 0
+listC = []
 
 A_boundary = totals[min(totalA - 1, len(totals) - 1)]
 B_boundary = totals[min(totalA + totalB - 1, len(totals) - 1)]
@@ -43,11 +43,20 @@ for i, total in enumerate(totals):
             grade = 'B'
         countB -= 1
     else:
-        countC += 1
+        listC.append(total)
         grade = 'C'
 
-    # C+ 처리...
-    # if grade == 'C' and countC
+        # C+ 처리...
+        listC.sort(reverse=True)
+        countC = len(listC)
+        countC0 = int(len(listC) * 0.5)
+
+        for j in listC:
+            if countC > countC0:
+                grade = 'C+'
+            else:
+                grade = 'C'
+            countC -= 1
 
     for row in sheet.iter_rows(2, stdNum + 1):
         student_id = row[0].value
