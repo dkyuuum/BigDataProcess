@@ -34,7 +34,7 @@ try:
 
         print(genreDict)
 
-        outputName = fileName.replace(fileName, "movieoutput")
+        outputName = fileName.replace(fileName, "movieoutput.txt")
 
     with open(outputName, "w") as output:
         for i in genreDict.keys():
