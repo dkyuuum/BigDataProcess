@@ -23,9 +23,14 @@ totalB = int(stdNum * 0.4)
 countA = totalA
 countB = totalB
 listC = []
+countF = 0
 
-A_boundary = totals[min(totalA - 1, len(totals) - 1)]
-B_boundary = totals[min(totalA + totalB - 1, len(totals) - 1)]
+A_boundary = totals[min(totalA - countF - 1, len(totals) - 1)]
+B_boundary = totals[min(totalA + totalB - countF - 1, len(totals) - 1)]
+
+for i, total in enumerate(totals):
+    if total < 40:
+        countF += 1
 
 for i, total in enumerate(totals):
     if total < 40:
