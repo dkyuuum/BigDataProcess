@@ -1,12 +1,13 @@
-#!/usr/bin/python3
-fileName = input()
+import sys
+
+fileName = str(sys.argv[1])
 
 genreList = []
 genreDict = {}
 total = []
 
 try:
-    with open(fileName, "rt") as f:
+    with open(fileName, "rt", encoding='UTF-8') as f:
         line = f.readlines()
         line = [str.rstrip('\n') for str in line]
 
@@ -32,9 +33,7 @@ try:
                 else:
                     genreDict[genre] += 1
 
-        print(genreDict)
-
-        outputName = fileName.replace(fileName, "movieoutput.txt")
+        outputName = fileName.replace(fileName, sys.argv[2])
 
     with open(outputName, "w") as output:
         for i in genreDict.keys():
