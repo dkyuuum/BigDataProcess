@@ -4,7 +4,6 @@ fileName = str(sys.argv[1])
 
 genreList = []
 genreDict = {}
-total = []
 
 try:
     with open(fileName, "rt", encoding='UTF-8') as f:
@@ -21,19 +20,14 @@ try:
         for j in range(0, len(genreList)):
             genreSplit = genreList[j].split("|")
 
-            for k in genreSplit:
-                if '\\n' in k:
-                    genre = k.split('\\')[0]
-                else:
-                    genre = k
-
+            for genre in genreSplit:
                 if genre not in genreDict:
-                    genreDict.setdefault(k, 0)
+                    genreDict.setdefault(genre, 0)
                     genreDict[genre] += 1
                 else:
                     genreDict[genre] += 1
 
-        outputName = fileName.replace(fileName, sys.argv[2])
+        outputName = sys.argv[2]
 
     with open(outputName, "w") as output:
         for i in genreDict.keys():
