@@ -37,14 +37,14 @@ def setDataSet(dataSetList):
 
 
 def getList(file):
-    v = np.zeros((1, 32*32))
+    vertex = np.zeros((1, 32*32))
     with open(file) as f:
         for j in range(32):
             line = f.readline()
 
             for k in range(32):
-                v[0, 32 * j + k] = int(line[k])
-        return v
+                vertex[0, 32 * j + k] = int(line[k])
+        return vertex
 
 
 testList = listdir(testFile)
