@@ -32,7 +32,7 @@ def setDataSet(dataSetList):
     for i in range(len(trainingFileList)):
         fileName = trainingFileList[i]
         labels.append(int(fileName.split('_')[0]))
-        matrix[i, :] = getList(dataSetList + '/' + fileName)
+        matrix[i, 0:len(trainingFileList)-1] = getList(dataSetList + '/' + fileName)
     return matrix, labels
 
 
@@ -41,9 +41,9 @@ def getList(file):
     with open(file) as f:
         for j in range(32):
             line = f.readline()
-
-            for k in range(32):
-                vertex[0, 32 * j + k] = int(line[k])
+            num = 32 * j
+            for k in range(0, 32):
+                vertex[0, num + k] = int(line[k])
         return vertex
 
 
