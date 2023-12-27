@@ -30,21 +30,21 @@ def setDataSet(dataSetList):
     matrix = np.zeros((len(trainingFileList), 32*32))
 
     for i in range(len(trainingFileList)):
-        fileNameStr = trainingFileList[i]
-        labels.append(int(fileNameStr.split('_')[0]))
-        matrix[i, :] = getList(dataSetList + '/' + fileNameStr)
+        fileName = trainingFileList[i]
+        labels.append(int(fileName.split('_')[0]))
+        matrix[i, :] = getList(dataSetList + '/' + fileName)
     return matrix, labels
 
 
 def getList(file):
-    vector = np.zeros((1, 32*32))
+    v = np.zeros((1, 32*32))
     with open(file) as f:
         for j in range(32):
             line = f.readline()
 
             for k in range(32):
-                vector[0, 32 * j + k] = int(line[k])
-        return vector
+                v[0, 32 * j + k] = int(line[k])
+        return v
 
 
 testList = listdir(testFile)
